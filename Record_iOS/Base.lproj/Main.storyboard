@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,63 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="录音信息:" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmZ-PV-qbJ">
+                                <rect key="frame" x="20" y="84" width="530" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="YFw-vz-hH4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEN-2B-u4l">
+                                <rect key="frame" x="72" y="184" width="226" height="30"/>
+                                <color key="backgroundColor" red="0.042241603136062622" green="0.97035032510757446" blue="0.97337502241134644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KUg-c9-KAi"/>
+                                    <constraint firstAttribute="width" constant="226" id="w4m-TF-Qas"/>
+                                </constraints>
+                                <state key="normal" title="播放录音">
+                                    <color key="titleColor" red="1" green="0.23076513570000001" blue="0.29726802629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yx8-CW-veM"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HTd-bA-Tog">
+                                <rect key="frame" x="72" y="28" width="226" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="9ai-dN-rxO"/>
+                                    <constraint firstAttribute="width" constant="226" id="hEQ-fP-TYk"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="WAV"/>
+                                    <segment title="CAF"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HTd-bA-Tog" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="52" id="60M-KS-dR3"/>
+                            <constraint firstItem="KmZ-PV-qbJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="May-il-DyX"/>
+                            <constraint firstItem="dEN-2B-u4l" firstAttribute="top" secondItem="KmZ-PV-qbJ" secondAttribute="bottom" constant="27" id="TQe-Ud-3xD"/>
+                            <constraint firstItem="KmZ-PV-qbJ" firstAttribute="top" secondItem="HTd-bA-Tog" secondAttribute="bottom" constant="28" id="a4s-xj-0J3"/>
+                            <constraint firstItem="HTd-bA-Tog" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="aZA-N5-lHV"/>
+                            <constraint firstItem="dEN-2B-u4l" firstAttribute="leading" secondItem="HTd-bA-Tog" secondAttribute="leading" id="nKD-5d-zZc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KmZ-PV-qbJ" secondAttribute="trailing" constant="30" id="w9G-C1-31L"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="RecordPath" destination="KmZ-PV-qbJ" id="H6i-1q-GmK"/>
+                        <outlet property="playRecord" destination="dEN-2B-u4l" id="AqK-6m-dt5"/>
+                        <outlet property="recordPath" destination="KmZ-PV-qbJ" id="CEt-JM-hLi"/>
+                        <outlet property="recordType" destination="HTd-bA-Tog" id="Eyl-wU-3M3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="356" y="295"/>
         </scene>
     </scenes>
 </document>
